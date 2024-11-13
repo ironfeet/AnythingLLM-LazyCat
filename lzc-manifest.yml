@@ -9,9 +9,7 @@ author:
 application:
   subdomain: anythingllm
   routes:
-    #- /__not_use=exec://80,/lzcapp/pkg/content/init.sh
     - /=http://anythingllm.cloud.lazycat.app.anythingllm.lzcapp:3001
-    #- /=http://ollama.cloud.lazycat.app.anythingllm.lzcapp:11434
   gpu_accel: true
   depends_on:
     - anythingllm
@@ -36,7 +34,7 @@ services:
         while true; do sleep 10000; done
       "
     binds:
-      - /lzcapp/run/mnt/home/ironfeet:/mnt
+      - /lzcapp/var:/mnt
 
   anythingllm:
     image: mintplexlabs/anythingllm:1.2.4
@@ -64,11 +62,10 @@ services:
       # Add any other keys here for services or settings
       # you can find in the docker/.env.example file
     binds:
-      - /lzcapp/run/mnt/home/ironfeet/anythingllm:/app/server/storage
-      #- /lzcapp/var/anythingllm-lazycat:/app/server/storage
+      - /lzcapp/var/anythingllm:/app/server/storage
     restart: always
 
   ollama:
     image: ollama/ollama:0.4.1
     binds:
-      - /lzcapp/run/mnt/home/ironfeet/ollama:/root/.ollama
+      - /lzcapp/var/ollama:/root/.ollama

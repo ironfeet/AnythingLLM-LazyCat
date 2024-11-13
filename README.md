@@ -1,17 +1,17 @@
 # AnythingLLM-LazyCat
 
-# What
+## What
 
 This project involves porting the lightweighted RAG implementation of AnythingLLM + Ollama to LazyCat MicroServer. 
 
 So, please do not expect that this project can help you run this RAG implementation on platforms other than LazyCat MicroServer. 
 
-# Dependencies
+## Dependencies
 
 - AnythingLLM:1.2.4
 - Ollama:0.4.1
 
-# How
+## How
 
 - How to Use AnythingLLM
 

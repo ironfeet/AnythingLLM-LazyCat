@@ -1,0 +1,74 @@
+lzc-sdk-version: 0.1
+name: AnythingLLM
+package: cloud.lazycat.app.anythingllm
+version: 0.0.1
+description: 
+license: https://choosealicense.com/licenses/mit/
+homepage: 
+author: 
+application:
+  subdomain: anythingllm
+  routes:
+    #- /__not_use=exec://80,/lzcapp/pkg/content/init.sh
+    - /=http://anythingllm.cloud.lazycat.app.anythingllm.lzcapp:3001
+    #- /=http://ollama.cloud.lazycat.app.anythingllm.lzcapp:11434
+  gpu_accel: true
+  depends_on:
+    - anythingllm
+  background_task: true
+
+  ingress:
+    - protocol: tcp
+      port: 11434
+      service: ollama
+
+services:
+  init:
+    image: alpine
+    command: sh -c "
+        set -eux;
+
+        mkdir -p /mnt/anythingllm;
+
+        chown -R 1000:1000 /mnt/anythingllm;
+        chmod -R 700 /mnt/anythingllm;
+
+        while true; do sleep 10000; done
+      "
+    binds:
+      - /lzcapp/run/mnt/home/ironfeet:/mnt
+
+  anythingllm:
+    image: mintplexlabs/anythingllm:1.2.4
+    #ports:
+      #- "3001:3001"
+    depends_on:
+      - init
+      - ollama
+    environment:
+    # Adjust for your environment
+      - STORAGE_DIR=/app/server/storage
+      - JWT_SECRET="safjikocdasujtioewuajlsdkzfjkldj87624872361&*^&*^&*%^&%&*^&*6@!#$#@!$#@!$"
+      - LLM_PROVIDER=ollama
+      - OLLAMA_BASE_PATH=http://ollama.cloud.lazycat.app.anythingllm.lzcapp:11434
+      - OLLAMA_MODEL_PREF=llama2
+      - OLLAMA_MODEL_TOKEN_LIMIT=4096
+      - EMBEDDING_ENGINE=ollama
+      - EMBEDDING_BASE_PATH=http://ollama.cloud.lazycat.app.anythingllm.lzcapp:11434
+      - EMBEDDING_MODEL_PREF=nomic-embed-text:latest
+      - EMBEDDING_MODEL_MAX_CHUNK_LENGTH=8192
+      - VECTOR_DB=lancedb
+      - WHISPER_PROVIDER=local
+      - TTS_PROVIDER=native
+      - PASSWORDMINCHAR=8
+      # Add any other keys here for services or settings
+      # you can find in the docker/.env.example file
+    binds:
+      - /lzcapp/run/mnt/home/ironfeet/anythingllm:/app/server/storage
+      #- /lzcapp/var/anythingllm-lazycat:/app/server/storage
+    restart: always
+
+  ollama:
+    image: ollama/ollama:0.4.1
+    binds:
+      - /lzcapp/run/mnt/home/ironfeet/ollama:/root/.ollama

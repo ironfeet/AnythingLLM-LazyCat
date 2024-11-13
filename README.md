@@ -23,8 +23,10 @@ So, please do not expect that this project can help you run this RAG implementat
 
     For example, the command below is to pull a model
 
-    `curl http://anythingllm.${YourLazyCatMicroServerName}.heiyu.space:11434/api/pull -d '{
+```bash
+        curl http://anythingllm.${YourLazyCatMicroServerName}.heiyu.space:11434/api/pull -d '{
 
-"name": "llama3.2"
+            "name": "llama3.2"
 
-}`
+        }
+```

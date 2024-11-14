@@ -35,18 +35,21 @@ Due to the LazyCat MicroServer's limited memory and CPU, it is highly not recomm
 ### To process the documents that do not contain any sensitive data
 
 - Chat Model: API
-- Embedding Model: API
+- Agent Model: API
+- Embedder: API
 - Vector DB: LanceDB
 
 ### To process the documents that do contain any sensitive data but are not very confidential
 
 - Chat Model: API
+- Agent Model: API
 - Embedding Model: Ollama - mxbai-embed-large
 - Vector DB: LanceDB
 
 ### To process the documents that contain any confidential data
 
 - Chat Model: Ollama - llama3.2
+- Agent Model: Ollama - llama3.2
 - Embedding Model: Ollama - mxbai-embed-large
 - Vector DB: LanceDB
 

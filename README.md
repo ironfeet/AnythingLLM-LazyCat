@@ -2,9 +2,9 @@
 
 ## What
 
-This project involves porting the lightweighted RAG implementation of AnythingLLM + Ollama to LazyCat MicroServer. 
+This project involves porting the lightweight RAG implementation of AnythingLLM + Ollama to LazyCat MicroServer. 
 
-So, please do not expect that this project can help you run this RAG implementation on platforms other than LazyCat MicroServer. 
+So, please do not expect this project to help you run this RAG implementation on platforms other than LazyCat MicroServer. 
 
 ## Dependencies
 
@@ -21,7 +21,7 @@ So, please do not expect that this project can help you run this RAG implementat
 
     Please refer to [Ollama API Documentation](https://github.com/ollama/blob/main/docs/api.md)
 
-    For example, the command below is to pull a model
+    For example, the command below is to pull a model.
 
 ```bash
         curl http://anythingllm.${YourLazyCatMicroServerName}.heiyu.space:11434/api/pull -d '{
@@ -30,3 +30,24 @@ So, please do not expect that this project can help you run this RAG implementat
 
         }
 ```
+## Recommended Configuration
+
+Due to the LazyCat MicroServer's limited memory and CPU, it is highly not recommended to run LLMs with 10s of billions of parameters for real-time chat on the LazyCat MicroServer.
+
+### To process the documents that do not contain any sensitive data
+
+- Chat Model: API
+- Embedding Model: API
+- Vector DB: LanceDB
+
+### To process the documents that do contain any sensitive data but are not very confidential
+
+- Chat Model: API
+- Embedding Model: Ollama - mxbai-embed-large
+- Vector DB: LanceDB
+
+### To process the documents that contain any confidential data
+
+- Chat Model: Ollama - llama3.2
+- Embedding Model: Ollama - mxbai-embed-large
+- Vector DB: LanceDB

@@ -1,6 +1,6 @@
 lzc-sdk-version: 0.1
 name: AnythingLLM
-package: cloud.lazycat.app.anythingllm
+package: me.ironfeet.app.anythingllm
 version: 0.0.1
 description: 
 license: https://choosealicense.com/licenses/mit/
@@ -9,7 +9,7 @@ author:
 application:
   subdomain: anythingllm
   routes:
-    - /=http://anythingllm.cloud.lazycat.app.anythingllm.lzcapp:3001
+    - /=http://anythingllm.me.ironfeet.app.anythingllm.lzcapp:3001
   gpu_accel: true
   depends_on:
     - anythingllm
@@ -48,11 +48,11 @@ services:
       - STORAGE_DIR=/app/server/storage
       - JWT_SECRET="safjikocdasujtioewuajlsdkzfjkldj87624872361&*^&*^&*%^&%&*^&*6@!#$#@!$#@!$"
       - LLM_PROVIDER=ollama
-      - OLLAMA_BASE_PATH=http://ollama.cloud.lazycat.app.anythingllm.lzcapp:11434
+      - OLLAMA_BASE_PATH=http://ollama.me.ironfeet.app.anythingllm.lzcapp:11434
       - OLLAMA_MODEL_PREF=llama2
       - OLLAMA_MODEL_TOKEN_LIMIT=4096
       - EMBEDDING_ENGINE=ollama
-      - EMBEDDING_BASE_PATH=http://ollama.cloud.lazycat.app.anythingllm.lzcapp:11434
+      - EMBEDDING_BASE_PATH=http://ollama.me.ironfeet.app.anythingllm.lzcapp:11434
       - EMBEDDING_MODEL_PREF=nomic-embed-text:latest
       - EMBEDDING_MODEL_MAX_CHUNK_LENGTH=8192
       - VECTOR_DB=lancedb

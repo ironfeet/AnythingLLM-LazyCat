@@ -46,9 +46,8 @@ icon: ./icon.png
 # 如果 dependencies 和 build 同时存在，将会优先使用 dependencies
 devshell:
   routes:
-    #- /=http://127.0.0.1:3000
-    - /=http://anythingllm.cloud.lazycat.app.anythingllm.lzcapp:3001
-    #- /=http://ollama.cloud.lazycat.app.anythingllm.lzcapp:11434
+    - /=http://anythingllm.me.ironfeet.app.anythingllm.lzcapp:3001
+    #- /=http://ollama.me.ironfeet.app.anythingllm.lzcapp:11434
   dependencies:
     - vim
   # setupscript 每次进入到app container后都会执行的配置脚本

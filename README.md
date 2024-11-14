@@ -50,9 +50,26 @@ Due to the LazyCat MicroServer's limited memory and CPU, it is highly not recomm
 - Embedding Model: Ollama - mxbai-embed-large
 - Vector DB: LanceDB
 
+Here are the commands for pulling llama3.2 and mxbai-embed-large models.
+
+```bash
+curl http://anythingllm.${YourLazyCatMicroServerName}.heiyu.space:11434/api/pull -d '{
+  "name": "llama3.2"
+}
+
+curl http://anythingllm.${YourLazyCatMicroServerName}.heiyu.space:11434/api/pull -d '{
+  "name": "mxbai-embed-large"
+}
+```
+## Recommended Configuration
+
+Due to the LazyCat MicroServer's limited memory and CPU, it is highly not recommended to run LLMs with 10s of billions of parameters for real-time chat on the LazyCat MicroServer.
+
+
 ## How to Check the Status of Ollama
 
 - Access http://anythingllm.${YourLazyCatMicroServerName}.heiyu.space:11434/ to check whether "Ollama is running" is shown.
+
 ![Uptime Kuma Ollama](img/Uptime-Kuma-Ollama.png)
 
 - Alternatively, you can install and leverage the Uptime Kuma to track Ollama's status easily.
